@@ -1,0 +1,43 @@
+<input type="file" id="fileInput" />
+<button onclick="uploadFile()">Submit</button>
+
+<pre id="output"></pre>
+
+<script>
+  
+async function uploadFile() {
+  const file = document.getElementById("fileInput").files[0];
+  if (!file) {
+    alert("Select a file first");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = async function () {
+    const base64 = reader.result.split(",")[1];
+
+    let fileType = "image";
+    if (file.name.endsWith(".pdf")) fileType = "pdf";
+    if (file.name.endsWith(".docx")) fileType = "docx";
+
+    const response = await fetch("http://localhost:5000/api/document-analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "sk_track2_987654321"
+      },
+      body: JSON.stringify({
+        fileName: file.name,
+        fileType: fileType,
+        fileBase64: base64
+      })
+    });
+
+    const data = await response.json();
+    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+  };
+
+  reader.readAsDataURL(file);
+}
+</script>

@@ -1,0 +1,65 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+
+venv/
+env/
+ENV/
+.venv/
+
+# Environment variables
+
+.env
+.env.*
+
+# Flask
+
+instance/
+.webassets-cache
+
+# Logs
+
+*.log
+
+# Database
+
+*.sqlite3
+*.db
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+*.swp
+
+# Build / distribution
+
+build/
+dist/
+*.egg-info/
+
+# Node (if using Tailwind or frontend tools)
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+
+.coverage
+htmlcov/
+
+# Temporary files
+
+*.tmp
+*.temp
